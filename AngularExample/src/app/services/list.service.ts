@@ -7,7 +7,7 @@ import {ListItem} from "../interfaces/listItem.interface";
   providedIn: 'root',
 })
 export class ListService {
-  private baseUrl = 'http://localhost:4200/api';
+  private baseUrl = 'http://localhost:5010/api';
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +27,8 @@ export class ListService {
     return this.http.put<ListItem>(`${this.baseUrl}/ListItem`, model);
   }
 
-  deleteListItem(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/ListItem/${id}`);
+  deleteListItem(id: number): Observable<ListItem> {
+    return this.http.delete<ListItem>(`${this.baseUrl}/ListItem/${id}`);
   }
 }
+

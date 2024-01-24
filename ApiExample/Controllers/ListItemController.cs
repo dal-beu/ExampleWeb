@@ -15,7 +15,7 @@ namespace ApiExample.Controllers
         }
 
         // GET: api/ListItem/5
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<ListItem>> GetListItem(int id)
         {
             var listItem = await context.ListItems.FindAsync(id);
@@ -25,7 +25,7 @@ namespace ApiExample.Controllers
                 return NotFound();
             }
 
-            return listItem;
+            return Ok(listItem);
         }
 
         // PUT: api/ListItem/5

@@ -6,7 +6,6 @@
       <input
         #listItem
         (keyup.enter)="addItem(listItem.value)"
-        (blur)="listItem.value = ''"
       />
       <button type="button" (click)="addItem(listItem.value)">Add</button>
 

@@ -11,8 +11,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ListContext>();
 builder.Services.AddControllers();
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -24,5 +27,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
+
+app.UseCors(options =>
+  options.WithOrigins("http://localhost:4200")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 app.Run();
 
